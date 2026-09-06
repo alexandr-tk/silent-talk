@@ -1,50 +1,27 @@
-# Vite & NextUI Template
+# Silent Talk frontend
 
-This is a template for creating applications using Vite and NextUI (v2).
+React, TypeScript, and Vite interface for a webcam fingerspelling prototype, originally based on the NextUI v2 template.
 
-[Try it on CodeSandbox](https://githubbox.com/nextui-org/vite-template)
+## Development
 
-## Technologies Used
-
-- [Vite](https://vitejs.dev/guide/)
-- [NextUI](https://nextui.org)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [Framer Motion](https://www.framer.com/motion)
-
-## How to Use
-
-To clone the project, run the following command:
-
-```bash
-git clone https://github.com/nextui-org/vite-template.git
-```
-
-### Install dependencies
-
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
+From this directory:
 
 ```bash
 npm install
-```
-
-### Run the development server
-
-```bash
 npm run dev
 ```
 
-### Setup pnpm (optional)
+The camera view and main text display expect the Flask backend at `http://localhost:5000`. The camera belongs to the machine running Flask. See [the project README](../README.md) for backend setup and project limits.
 
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
+## Source map
 
-```bash
-public-hoist-pattern[]=*@nextui-org/*
-```
+- `src/components/camera-component.tsx`: displays the backend video feed.
+- `src/components/command-display.tsx`: polls recognized text and resets it.
+- `src/services/apiService.ts`: API helpers.
+- `src/hooks/use-theme.ts`: stores the light/dark theme preference.
 
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+The settings helper calls `/set_stable_time`, which the backend does not implement. Relative API helpers also need routing configuration; `vite.config.ts` currently has no API proxy.
 
-## License
+## Template attribution
 
-Licensed under the [MIT license](https://github.com/nextui-org/vite-template/blob/main/LICENSE).
+The interface started from the [NextUI Vite template](https://github.com/nextui-org/vite-template), distributed under the [MIT license](https://github.com/nextui-org/vite-template/blob/main/LICENSE).
